@@ -10,19 +10,23 @@ typedef struct
     double diemtb;
     char diaChi[50];
 }SV;
+
 typedef struct Node
 {
     SV data;
     struct Node *next;
 }node;
+
 typedef struct
 {
     node *head, *tail;
 }List;
+
 void init(List *l)
 {
     l->head = l->tail = NULL;
 }
+
 node* taonode(SV *sv)
 {
     node *p;
@@ -31,7 +35,6 @@ node* taonode(SV *sv)
     p->data = *sv;
     p->next =NULL;
     return p;
-
 }
 
 void themCuoi(List *l, node *p)

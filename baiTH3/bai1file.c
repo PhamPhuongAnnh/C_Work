@@ -56,10 +56,6 @@ int main()
         fprintf(f1, "\n");
     }
     fclose(f1);
-
-
-
-
     return 0;
 
 }

@@ -107,7 +107,6 @@ int main()
     SV sv;
     FILE *f;
     int chon;
-
     do{
         menu();
         scanf("%d", &chon);
@@ -134,7 +133,6 @@ int main()
             getch();
             system("cls");
             break;
-
         }
     }while (chon!=0);
     fclose(f);
