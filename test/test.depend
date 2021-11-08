@@ -1,8 +1,5 @@
 # depslib dependency file v1.0
-1635849084 source:d:\code\c_work\test\main.c
+1635930998 source:d:\code\c_work\test\main.c
 	<stdio.h>
-	<conio.h>
-
-1635849714 source:d:\code\c_work\test\max_min.c
-	<stdio.h>
+	<stdlib.h>
 

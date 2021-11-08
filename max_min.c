@@ -34,6 +34,8 @@ int luyThua(int a, int b)
     }
     return LT;
 }
+
+
 int main()
 {
     int a,b,c;
