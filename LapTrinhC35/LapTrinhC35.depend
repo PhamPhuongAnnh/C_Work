@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1636037462 source:d:\code\c_work\laptrinhc35\main.c
+1637306304 source:d:\code\c_work\laptrinhc35\main.c
 	<stdio.h>
+	<math.h>
 

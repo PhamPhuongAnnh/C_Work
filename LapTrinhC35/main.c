@@ -1,16 +1,19 @@
 #include <stdio.h>
-#define Pi 3.14
-int c; // biến toàn cục
+#include <math.h>
+
 int main()
 {
-//
-/* */
-    int x = 3;
-    int y = 0;
-    y += ++x +5;
-    printf("%d\t%d",x,y);
-    điều kiện? biểu thức 1 : biểu thức số 2;
-    int c;
-    (4 < 3)? (c =1): (c = 0);
+    float a,b;
+    scanf("%f",&a);
+    scanf("%f",&b);
+    if(a>b)
+        printf("a > b");
+    else if(a<b)
+        printf("a < b");
+    else
+        printf("a = b");
+
+
+    return 0;
 
 }
