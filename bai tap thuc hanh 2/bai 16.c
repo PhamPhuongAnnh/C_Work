@@ -86,12 +86,12 @@ void nhapDSLK(List *l, SV *sv)
 
 void xuat1sv(SV sv)
 {
-   printf("\n%5d|%20s|%10d|%7.1f|",sv.stt, sv.hoten, sv.tuoi, sv.diemtb);
+   printf("\n%5s|%20s|%10d|%7.1f|%20s",sv.maSV, sv.hoten, sv.sdt, sv.diemtb,sv.diaChi);
 }
 void xuatDSSV(List l)
 {
     node *k;
-    printf("\n%5s|%20s|%10s|%7s|", "stt", "hoten", "tuoi", "diemtb");
+    printf("\n%5s|%20s|%10s|%7s|%20s", "maSV", "hoten", "sodienthoai", "diemtb","diachi");
     for(k=l.head; k!=NULL; k=k->next){
         xuat1sv(k->data);
     }
