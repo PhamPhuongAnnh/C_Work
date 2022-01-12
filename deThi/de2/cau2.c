@@ -34,6 +34,7 @@ void writeFile()
         scanf("%d", &H.SO_Luong);
         fwrite(&H, sizeof(Hang_Hoa),1, f);
     }
+    f
     fclose(f);
 }
 
