@@ -1,46 +1,48 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <math.h>
-struct Diem
-{
-    float x;
-    float y;
-    float z;
-};
-int d;
-typedef struct Diem DIEM;
-
-
-void NhapDiem(DIEM *a)
-{
-    scanf("%f", &a->x);
-
-    scanf("%f", &a->y);
-
-    scanf("%f", &a->z);
-}
-void XuatDiem(DIEM a)
-{
-    printf("(%.*f, %.*f, %.*f)\n",d,a.x,d, a.y,d, a.z);
-}
-
-float TinhKhoangCachGiua2Diem(DIEM a, DIEM b)
-{
-    float kq = sqrt((b.x - a.x)*(b.x - a.x) + (b.y - a.y)*(b.y - a.y) + (b.z - a.z)* (b.z - a.z));
-    return kq;
-
-}
+char chuoi[1001],phantu[1002];
+int dem,len,dem1,len1,k,max,i,j;
 int main()
 {
-    DIEM a, b;
-    NhapDiem(&a);
-    XuatDiem(a);
-    NhapDiem(&b);
-    XuatDiem(b);
-    scanf("%d",&d);
-    float khoangcach = TinhKhoangCachGiua2Diem(a, b);
-    printf("%.*f",d,khoangcach);
-
+    gets(chuoi);
+    len=strlen(chuoi);
+    max=1;
+    dem=0;
+    for (i=1;i<=len;i++)
+    {
+        len1=len-i;
+        for (j=0;j<=len1;j++)
+        {
+            phantu[1001]=1;
+            for (k=0;k<i/2;k++)
+            {
+                if (chuoi[k+j]!=chuoi[j+i-k-1])
+                {
+                    phantu[1001]=0;
+                    break;
+                }
+            }
+            if (phantu[1001]==1&& max!=i){
+                max=i;
+                dem=0;
+                phantu[dem]=j;
+                dem++;
+                }
+                else if (phantu[1001]==1&& max==i)
+                {
+                    phantu[dem]=j;
+                    dem++;
+                }
+        }
+    }
+    printf("%d\n",max);
+    for (i=0;i<dem;i++)
+    {
+        for (k=0;k<max;k++)
+        {
+            printf("%c",chuoi[phantu[i]+k]);
+        }
+        printf("\n");
+    }
     return 0;
 }
