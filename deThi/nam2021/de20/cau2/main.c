@@ -5,7 +5,7 @@ typedef struct
 {
     char id[10];
     char name[50];
-    int age;
+//    int age;
 } SV;
 
 void writeFile(FILE *f, SV sv)
@@ -13,7 +13,7 @@ void writeFile(FILE *f, SV sv)
     int n;
     printf("Nhap so luong sinh vien: ");
     scanf("%d", &n);
-    f = fopen("DS_SV.C", "wb");
+    f = fopen("DS_SV.txt", "wt");
     for(int i=0; i<n; i++)
     {
         fflush(stdin);
@@ -21,22 +21,22 @@ void writeFile(FILE *f, SV sv)
         gets(sv.id);
         printf("Nhap ho ten sinh vien: ");
         gets(sv.name);
-        printf("nhap nam sinh sinh vien: ");
-        scanf("%d", &sv.age);
+//        printf("nhap nam sinh sinh vien: ");
+//        scanf("%d", &sv.age);
         fwrite(&sv, sizeof(SV), 1,f);
     }
     fclose(f);
 }
 void readFile(FILE *f, SV sv)
 {
-    f = fopen("DS_SV.C", "rb");
+    f = fopen("DS_SV.txt", "rt");
     rewind(f);
     int i=1;
     printf("=====================DANH SACH SINH VIEN=======================\n");
-    printf("%10s%16s%16s%16s\n", "STT", "Ma SV", "Ho ten", "Nam sinh");
+    printf("%10s%16s%16s\n", "STT", "Ma SV", "Ho ten");
     while (fread(&sv, sizeof(SV), 1,f)!=NULL)
     {
-        printf("%10d%16s%16s%16d\n",i++, sv.id, sv.name, sv.age );
+        printf("%10d%16s%16s\n",i++, sv.id, sv.name);
 
     }
     fclose(f);
@@ -44,8 +44,8 @@ void readFile(FILE *f, SV sv)
 void suaDanhSachSinhVien(FILE *f,FILE *fm, SV sv)
 {
 
-    f = fopen("DS_SV.C", "rb");
-    fm = fopen("DS_SV1.C", "wb");
+    f = fopen("DS_SV.txt", "rt");
+    fm = fopen("DS_SV1.txt", "wt");
     char ht[50];
     SV sv1;
     printf("\nNhap ho ten sinh vien muon chinh sua: ");
@@ -54,8 +54,8 @@ void suaDanhSachSinhVien(FILE *f,FILE *fm, SV sv)
     printf("\nNhap ten sua lai: ");
     fflush(stdin);
     gets(sv1.name);
-    printf("\nNhap nam sinh sua lai: ");
-    scanf("%d", &sv1.age);
+//    printf("\nNhap nam sinh sua lai: ");
+//    scanf("%d", &sv1.age);
     while(fread(&sv, sizeof(SV), 1,f)!=NULL)
     {
         if(strcmp(sv.name, ht) == 0)
@@ -72,14 +72,14 @@ void suaDanhSachSinhVien(FILE *f,FILE *fm, SV sv)
 
     }
     fclose(fm);
-    fm = fopen("DS_SV1.C", "rb");
+    fm = fopen("DS_SV1.txt", "rt");
     rewind(f);
     int i=1;
     printf("=====================DANH SACH SINH VIEN=======================\n");
     printf("%10s%16s%16s%16s\n", "STT", "Ma SV", "Ho ten", "Nam sinh");
     while (fread(&sv, sizeof(SV), 1,fm)!=NULL)
     {
-        printf("%10d%16s%16s%16d\n",i++, sv.id, sv.name, sv.age );
+        printf("%10d%16s%16s\n",i++, sv.id, sv.name );
 
     }
     fclose(f);

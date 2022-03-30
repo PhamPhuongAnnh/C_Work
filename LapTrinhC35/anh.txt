@@ -1,0 +1,18 @@
+
+bảng chữ cái A ... Z  trong bẳng mã ascii là 65 ...90
+Bảng chữ cái thì có 26 chữ cái 
+Bài toán: giải mã lấy chữ cái - key để ra đáp án 
+các th đặc biệt ví dụ như là: C và  key 5 --> đáp án sẽ ra X 
+thì có nghĩa là mk cần quay lại về cuối khi key (kiểu vượt quá) thì mk phải vòng lại 
+Giải thuật sẽ là: mk sẽ đưa về từ 0 đến 26
+lúc này bảng chữ cái nó sẽ là 
+A B C ....X   Y  Z
+0 1 2 ....23 24 25
+
+theo ví dụ C = 67  key 5 --> X = 88
+thì h phải chuyển vể 0 ... 25
+(67-65) // chuyển về từ 0 
+(2 - 5) // lấy số đó là trừ đi key nó sẽ là số âm nêu mk cần phải cộng thêm 26 để nó là số dương 
+// vì sao lại phải cộng 26 thì khi  mà mk chia lấy dư thì nó sẽ ra đúng là 23 để là x tương ứng với bảng chữ cái 
+
+(-3+26) = 23%26 là nó sẽ dư 23 luôn là kết quả mk cần tìm thì để đúng với bảng mã ascii thì cần cộng lại với 65

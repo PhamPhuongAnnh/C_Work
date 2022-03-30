@@ -14,12 +14,12 @@ char c, a, b, d, e, g;
 void ham1()
 {
 	FILE *F;
-	F = fopen("PhuongLan.txt", "r");
+	F = fopen("Hello.txt", "r");
 	while (c != EOF)
 	{
 		c = fgetc(F);
-		Sleep(50);//35
-		textcolor(10);
+		Sleep(1);//35
+		textcolor(12);
 		printf("%c", c);
 	}fclose(F);
 }

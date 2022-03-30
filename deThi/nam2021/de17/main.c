@@ -1,18 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct
-{
-    long long sdt;
-    int sotien;
-}thongTin;
+#include<stdio.h>
+int main() {
+    FILE *fp;
+    char name[50];
+    int id;
+    float marks;
 
-void writeFile(FILE *f, thongTin tt)
-{
-    f = fopen("SO_LIEU.C", "wb");
+    fp = fopen("sinhvien.txt", "r");
 
-}
-int main()
-{
+    if(fp == NULL) {
+        printf("Error opening file\n");
+        exit(1);
+    }
 
+    printf("Vi du su dung ham fscanf(): \n\n");
+    printf("Name:\t\tID\t\tMarks\n");
+
+    // doc thong tin sinh vien
+    while( fscanf(fp, "Name: %s\t\t%d\t\t%f\n"
+                    , name, &id, &marks) != EOF )
+    {
+        printf("%s\t\t%d\t\t%.2f\n", name, id ,marks);
+    }
+
+    fclose(fp);
     return 0;
 }
