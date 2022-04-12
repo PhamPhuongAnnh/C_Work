@@ -1,0 +1,156 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<conio.h>
+#include<windows.h>
+typedef struct Node
+{
+    int data;
+    struct Node*next;
+}node;
+typedef struct
+{
+    node*top;
+}stack;
+void init(stack*s)
+{
+    s->top=NULL;
+}
+node*getnode(int x)
+{
+    node*p=(node*)malloc(sizeof(node));
+    p->data=x;
+    p->next=NULL;
+    return p;
+}
+void push(stack*s,node*p)
+{
+    if(s->top==NULL)
+    {
+        s->top=p;
+    }
+    else
+    {
+        p->next=s->top;
+        s->top=p;
+    }
+}
+void pop(stack*s,int *x)
+{
+    if(s->top==NULL)
+    {
+        printf("Danh sach trong!");
+    }
+    else
+    {
+        node*p=s->top;
+        *x=p->data;
+        s->top=s->top->next;
+        free(p);
+    }
+}
+void doiheso(stack*s,int a,int b)
+{
+    int x;
+    node*p=(node*)malloc(sizeof(node));
+    while(a!=0)
+    {
+        x=a%b;
+        p=getnode(x);
+        push(s,p);
+        a/=b;
+    }
+}
+
+void hienthi(stack*s,int b)
+{
+    int a,x;
+    printf("Nhap so nguyen duong: ");
+    scanf("%d",&a);
+    doiheso(s,a,b);
+    printf("co so duoc doi thanh: ");
+    while(s->top!=NULL)
+    {
+        pop(s,&x);
+        if(x==10)
+        {
+            printf("%c",'A');
+            break;
+        }
+        if(x==11)
+        {
+            printf("%c",'B');
+            break;
+        }
+        if(x==12)
+        {
+            printf("%c",'C');
+            break;
+        }
+        if(x==13)
+        {
+            printf("%c",'D');
+            break;
+        }
+        if(x==14)
+        {
+            printf("%c",'E');
+            break;
+        }
+        if(x==15)
+        {
+            printf("%c",'F');
+            break;
+        }
+        printf("%d",x);
+    }
+}
+int main()
+{
+    stack*s=(stack*)malloc(sizeof(stack));
+    init(s);
+    int a;
+    while(1)
+    {
+        system("cls");
+        printf("\n");
+        printf("\t _________________________________________\n");
+        printf("\t|                   MENU                  |\n");
+        printf("\t|-----------------------------------------|\n");
+        printf("\t| 1.Chuyen 1 so nguyen duong sang co so 2 |\n");
+        printf("\t| 2.Chuyen 1 so nguyen duong sang co so 8 |\n");
+        printf("\t| 3.Chuyen 1 so nguyen duong sang co so 16|\n");
+        printf("\t|               4.Ket thuc                |\n");
+        printf("\t|_________________________________________|\n");
+        printf("Nhap lua chon: ");
+        scanf("%d",&a);
+        switch(a)
+        {
+        case 1:
+            hienthi(s,2);
+            break;
+        case 2:
+            hienthi(s,8);
+            break;
+        case 3:
+            hienthi(s,16);
+            break;
+        case 4:
+            system("cls");
+            printf("\n\n\tBYE BYE !");
+            getch();
+            break;
+        default:
+            printf("Nhap lai!");
+            break;
+        }
+        printf("\n\nLoading");
+        for(int i=0;i<4;i++)
+        {
+            printf(".");
+            Sleep(100);
+        }
+        printf("\nBam phim bat ki de tiep tuc!");
+        getch();
+    }
+    return 0;
+}
