@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
+// khai báo struc gồm thông tin sinh viên
 typedef struct
 {
     char ho_ten[50];
@@ -14,42 +14,45 @@ typedef struct
     double diem_tieng_anh;
     double tong;
 } Diem_Thi;
+// khai báo 1 node gồm dữ liệu là data và 1 con trỏ next để trỏ đến phần tử tiếp theo
 
 typedef struct Node
 {
     Diem_Thi data;
     struct Node *next;
 } Node;
-
+// khai báo một danh sách liên kết gồm 2 con trỏ: con trỏ đầu và con trỏ cuối
 typedef struct
 {
     Node *head;
     Node *tail;
 } List;
-
+// khai báo node
 Node *node_lt;
-
+// hàm tạo mới danh sách lên kết cho con trỏ đầu và con trỏ cuối trỏ tớn null
 void init_list(List *plist)
 {
     plist->head=plist->tail=NULL;
 }
 
+// hàm  taon mới một node p cho dữ liệu trỏ tới struct điểm thi
 Node *create_new_node(Diem_Thi *dt, Node *p)
 {
     p=(Node*)malloc(sizeof(Node));
-    if (p==NULL) return NULL;
-    p->data=*dt;
+    if (p==NULL) return NULL; // node trống thì trả về null
+    p->data=*dt; // cho dữ liệu trỏ đến data
     p->next=NULL;
-    return p;
+    return p;// trả về một node
 }
 
+// nhập thông tin điểm thi struc
 void read(Diem_Thi *dt)
 {
     printf("SBD: ");
     fflush(stdin);
     gets(dt->sbd);
     printf("Ho ten: ");
-    fflush(stdin);
+    fflush(stdin); // xóa bộ nhớ đệm
     gets(dt->ho_ten);
     printf("Diem toan: ");
     scanf("%lf",&dt->diem_toan);
