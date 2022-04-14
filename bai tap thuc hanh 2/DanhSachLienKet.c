@@ -62,55 +62,56 @@ void read(Diem_Thi *dt)
     scanf("%lf",&dt->diem_tieng_anh);
     dt->tong=dt->diem_ly+dt->diem_tieng_anh+dt->diem_toan;
 }
-
+// hàm thêm cuối
 void add_tail(List *plist, Node *p)
 {
-    if (plist->head==NULL)
+    if (plist->head==NULL) // nếu danh sách rỗng
     {
-        plist->head=plist->tail=p;
+        plist->head=plist->tail=p; // cho nốt đầu và nốt cuối = p
     }
     else
-    {
-        plist->tail->next=p;
-        plist->tail=p;
+    { // th danh sách không rỗi
+        plist->tail->next=p; // cho node cuối trỏ đến p
+        plist->tail=p; // và cho nốt hiện tại bàng p
     }
 }
-
+// hàm thêm đầu
 void add_head(List *plist, Node *p)
 {
-    if(plist->head==NULL)
+    if(plist->head==NULL) // nếu danh sách rỗng
     {
         plist->head=plist->tail=p;
     }
-    else
+    else// th ngược lại danh sahcs đã tồn tại phần tử
     {
-        p->next=plist->head;
-        plist->head=p;
+        p->next=plist->head;// cho node vừa thêm = node đầu
+        plist->head=p;// cho node bằng node vừa thêm
     }
 }
-
+// hàm chèn sau chèn sinh viên nhập từ bàn phím
 void add_mid(List *plist, Node *p)
 {
-    char key_sbd[10];
+    char key_sbd[10]; // số báo danh cần chèn sau
     printf("Nhap so bao danh thi sinh muon chen vao sau: ");
     fflush(stdin);
-    gets(key_sbd);
-    Node *tmp=plist->head;
-    while (tmp!=NULL && strcmp(tmp->data.sbd,key_sbd)!=0)
+    gets(key_sbd); // nhập
+    Node *tmp=plist->head; // khai báo 1 node từ đầu danh sách
+    while (tmp!=NULL && strcmp(tmp->data.sbd,key_sbd)!=0) // xem có tông tại không và so sánh với số node trong danh sách  nếu k đúng thì trỏ đến phần tử tiếp theo trong danh sách để kiểm tra
     {
         tmp=tmp->next;
     }
-    if (tmp!=NULL && strcmp(tmp->data.sbd,key_sbd)==0)
+    if (tmp!=NULL && strcmp(tmp->data.sbd,key_sbd)==0) // nếu như mà tìm thấy node trùng rồi
     {
-        p->next=tmp->next;
+        p->next=tmp->next;// thì chèn cái này xem trên mạng nó chèn như thế nào nói hơi dài
         tmp->next=p;
     }
     else
-    {
+    {// nếu k tìm thấy thì có nghĩa k tìm được số bao danh cần chèn sau
+
         printf("Khong tim thay so bao danh %s\n",key_sbd);
     }
 }
-
+// xóa phần tử đầu tiên f
 void delete_first(List *plist)
 {
     Node *tmp=plist->head;
@@ -121,6 +122,7 @@ void delete_first(List *plist)
     }
     free(tmp);
 }
+// hàm tìm kiếm trả về 1 node
 
 Node *search(List *plist, char key_sbd[])
 {
@@ -137,7 +139,7 @@ Node *search(List *plist, char key_sbd[])
     }
     return NULL;
 }
-
+// hàm xóa 1 node
 void delete_node(List *plist)
 {
     char key_sbd[10];
@@ -168,7 +170,7 @@ void delete_node(List *plist)
         printf("Khong the xoa thi sinh %s\n",key_sbd);
     }
 }
-
+// xóa hết cả danh sách
 void delete_list(List *plist)
 {
     Node *tmp;
@@ -180,7 +182,7 @@ void delete_list(List *plist)
     }
     plist->tail=NULL;
 }
-
+// hàm sửa
 void fix_node(List *plist)
 {
     char key_sbd[10];
@@ -213,6 +215,7 @@ void fix_node(List *plist)
         printf("Khong the sua thi sinh %s\n",key_sbd);
     }
 }
+// hàm sắp xếp
 
 void swap(Diem_Thi *dt1, Diem_Thi *dt2)
 {
@@ -220,7 +223,7 @@ void swap(Diem_Thi *dt1, Diem_Thi *dt2)
     *dt1=*dt2;
     *dt2=tmp;
 }
-
+// sắp xếp dảm dần
 void sort_down(List *plist)
 {
     Node *p,*k;
@@ -235,7 +238,7 @@ void sort_down(List *plist)
         }
     }
 }
-
+// nhập danh sách
 void load_list(List *plist, Diem_Thi *dt)
 {
     int n,i;
@@ -253,12 +256,12 @@ void load_list(List *plist, Diem_Thi *dt)
         add_tail(plist,p);
     }
 }
-
+// in ra 1 sinh viên
 void print_node(Diem_Thi dt,int i)
 {
     printf("\n%10d%10s%20s%15.1f%10.1f%10.1f%10.1f\n",i,dt.sbd,dt.ho_ten,dt.diem_toan,dt.diem_ly,dt.diem_tieng_anh,dt.tong);
 }
-
+// in ra danh sách
 void show_list(List *plist)
 {
     printf("\n\t\t\t\t\tDANH SACH DIEM THI\n");
